@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 
 # author: Weverson Quaresma <@weversonfurtado>
-# describe: Runs radio stations from Pará in the terminal.
+# describe: Runs radio stations from in the terminal.
 # version: 0.5
 # license: GNU Gereral Public License v3.0
 
 declare -A STREAM
-# A listagem de todos os link de estações de rádio Paraense
+# A listagem de todos os link de estações de rádios e as demais.
 STREAM=(
 	["Radio Metropolitana Fm 94"]="http://9320.brasilstream.com.br/mp3"
 	["Radio Rauland FM 95,1"]="https://stm1.srvif.com:6672"
@@ -20,6 +20,7 @@ STREAM=(
 	["Radio Kboing"]="https://stream.knbcdn.com.br/kboing-fm/kbostream/playlist.m3u8"
 	["Radio FFH Leider Geil"]="https://mp3.ffh.de/ffhchannels/hqvoting.aac"
 	["Radio Hit FM"]="https://stream-26.zeno.fm/88ck6ggfqm0uv?zs=eRq0Z-VqRlW0MllPWhyJEA"
+	["Radio Cbn RE"]="https://59f1cbe63db89.streamlock.net:1443/asabrancaradio/_definst_/asabrancaradio/playlist.m3u8"
 )
 
 function main(){
@@ -33,9 +34,9 @@ function main(){
 		main
 	done
 }
-# checagem do programa que será usado na função acima.
-if [ $(which ffplay) ]; then
+# Checagem do programa que será usado caso satifaça a condição a função acima será usada.
+if [ $(which mpv) ]; then
         main
 else
-        sudo apt install ffmpeg -y
+        sudo apt install mpv -y
 fi
